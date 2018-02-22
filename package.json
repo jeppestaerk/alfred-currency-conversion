@@ -1,0 +1,33 @@
+{
+  "name": "alfred-currency-conversion",
+  "version": "0.0.0",
+  "description": "Foreign exchange rates and currency conversion",
+  "license": "MIT",
+  "repository": "jeppestaerk/alfred-currency-conversion",
+  "author": {
+    "name": "Jeppe Stærk",
+    "email": "dev@staerk.io",
+    "url": "staerk.io"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "postinstall": "alfy-init",
+    "preuninstall": "alfy-cleanup"
+  },
+  "files": [
+    "index.js",
+    "icon.png",
+    "info.plist"
+  ],
+  "keywords": [
+    "alfred",
+    "workflow",
+    "alfy"
+  ],
+  "dependencies": {
+    "alfy": "^0.6.0"
+  },
+  "devDependencies": {}
+}
