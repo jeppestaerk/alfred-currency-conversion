@@ -20,3 +20,8 @@ In Alfred, type `cur`, <kbd>Enter</kbd>, and your query.
 ## License
 
 MIT © [Jeppe Stærk](https://staerk.io)
+
+
+## Credits
+
+Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)

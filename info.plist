@@ -2,10 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>name</key>
-	<string>currency-conversion</string>
 	<key>bundleid</key>
-	<string>io.staerk.currency-conversion</string>
+	<string>io.staerk.alfred.currency-conversion</string>
 	<key>category</key>
 	<string>Tools</string>
 	<key>connections</key>
@@ -14,7 +12,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>602E032B-C6A7-48BC-BCCA-A656CC50D57C</string>
+				<string>1AD8DBEC-7E88-407C-A2C2-319B44EA2D38</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -24,40 +22,31 @@
 			</dict>
 		</array>
 	</dict>
+	<key>createdby</key>
+	<string>Jeppe Stærk</string>
+	<key>description</key>
+	<string>Currency Conversion</string>
 	<key>disabled</key>
 	<false/>
+	<key>name</key>
+	<string>Currency</string>
 	<key>objects</key>
 	<array>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>602E032B-C6A7-48BC-BCCA-A656CC50D57C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
-				<key>argumenttype</key>
+				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>cur</string>
+				<string>curcon</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -90,25 +79,50 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>tell application "Alfred 3" to search "curcon {query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1AD8DBEC-7E88-407C-A2C2-319B44EA2D38</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>602E032B-C6A7-48BC-BCCA-A656CC50D57C</key>
+		<key>1AD8DBEC-7E88-407C-A2C2-319B44EA2D38</key>
 		<dict>
 			<key>xpos</key>
-			<integer>150</integer>
+			<integer>210</integer>
 			<key>ypos</key>
-			<integer>10</integer>
+			<integer>30</integer>
 		</dict>
 		<key>BC036EA6-E275-4C9E-B3A3-3E89948DF194</key>
 		<dict>
 			<key>xpos</key>
-			<integer>10</integer>
+			<integer>40</integer>
 			<key>ypos</key>
-			<integer>10</integer>
+			<integer>30</integer>
 		</dict>
 	</dict>
+	<key>webaddress</key>
+	<string></string>
 </dict>
 </plist>
