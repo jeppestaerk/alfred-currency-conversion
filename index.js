@@ -6,8 +6,9 @@ const output = [];
 const promises = [];
 const api = 'https://api.fixer.io';
 const currencies = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"];
-const baseCurrency = alfy.cache.get('baseCurrency');
 const lastUpdate = alfy.cache.get('updateDate');
+const baseCurrency = alfy.cache.get('baseCurrency');
+if (!baseCurrency || !lastUpdate) promises.push(updateRates("EUR"));
 const q = alfy.input.toUpperCase().replace('$', 'USD').replace('€', 'EUR').replace('£', 'GBP').replace('¥', 'JPY').split(/([0-9]+)([A-z]{1,3})/);
 q.forEach(item => item.split(" ").filter(item => item.length > 0).forEach(item => query.push(item)));
 

@@ -1,6 +1,6 @@
 {
   "name": "alfred-currency-conversion",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Foreign exchange rates and currency conversion",
   "license": "MIT",
   "repository": "jeppestaerk/alfred-currency-conversion",
@@ -19,7 +19,8 @@
   "files": [
     "index.js",
     "icon.png",
-    "info.plist"
+    "info.plist",
+    "flags/*.png"
   ],
   "keywords": [
     "alfred",
