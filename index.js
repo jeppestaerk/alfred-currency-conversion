@@ -1,9 +1,14 @@
 'use strict';
 const alfy = require('alfy');
 
-//const query = alfy.input.toUpperCase().split(" ");
-const q = alfy.input.toUpperCase().split(/([0-9]+)([A-z]{1,3})/);
 const query = [];
+const output = [];
+const promises = [];
+const api = 'https://api.fixer.io';
+const currencies = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"];
+const baseCurrency = alfy.cache.get('baseCurrency');
+const lastUpdate = alfy.cache.get('updateDate');
+const q = alfy.input.toUpperCase().replace('$', 'USD').replace('€', 'EUR').replace('£', 'GBP').replace('¥', 'JPY').split(/([0-9]+)([A-z]{1,3})/);
 q.forEach(item => {
 	item.split(" ").forEach(value => {
 		if (value) {
@@ -11,22 +16,7 @@ q.forEach(item => {
 		}
 	});
 });
-const api = 'https://api.fixer.io';
-const output = [];
-const promises = [];
-const currencies = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"];
-const symbols = {"$": "USD", "€": "EUR", "£": "GBP"};
-const baseCurrency = alfy.cache.get('baseCurrency');
-const lastUpdate = alfy.cache.get('updateDate');
-const debug = false;
 
-if (debug) {
-	query.forEach(item => {
-		output.push({
-			title: `${query.indexOf(item)} ${item}`
-		})
-	})
-}
 function cacheRates(data) {
 	const rates = data.rates;
 	Object.keys(rates).forEach((cur) => {
@@ -40,7 +30,7 @@ function updateRates(base) {
 	return alfy.fetch(`${api}/latest?base=${base}`).then(cacheRates);
 }
 
-if (!query[0]) {
+function addInitOutput() {
 	output.push({
 		title: `See current rates for ${baseCurrency}`,
 		subtitle: `rates last updated: ${lastUpdate}`,
@@ -51,67 +41,96 @@ if (!query[0]) {
 		}
 	});
 	output.push({
-		title: 'Set base currency',
-		subtitle: `current base currency is: ${baseCurrency}`,
+		title: 'Set/Update base currency',
+		subtitle: `current base currency is: ${baseCurrency} (rates last updated: ${lastUpdate})`,
 		arg: 'SET',
 		autocomplete: 'SET'
 	});
-} else if (query[0] === 'SET' && !query[1]) {
-	currencies.forEach(cur => {
+}
+
+function addSetBaseCurrencyListOutput() {
+	currencies.forEach(currency => {
 		output.push({
-			title: `Set base currency to: ${cur}`,
+			title: `Set base currency to: ${currency}`,
 			icon: {
-				path: `flags/${cur}.png`
+				path: `flags/${currency}.png`
 			},
-			arg: `SET ${cur}`
+			arg: `SET ${currency}`
 		})
 	});
-} else if (query[0] === 'SET' && currencies.includes(query[1])) {
-	promises.push(updateRates(query[1]));
+}
+
+function addUpdateRatesOutput(currency) {
 	output.push({
-		title: `Update rates for: ${query[1]}`,
+		title: `Update rates for: ${currency}`,
 		icon: {
-			path: `flags/${query[1]}.png`
+			path: `flags/${currency}.png`
 		},
 		arg: '1'
 	})
-} else if (query[0].match('^\\d+$') && !query[1]) {
-	currencies.forEach(cur => {
-		if (cur !== baseCurrency) {
-			const rate = alfy.cache.get(cur);
+}
+
+function addCurrencyOutput(multiplier, currency) {
+	const rate = alfy.cache.get(currency);
+	const baseAmount = (multiplier / rate).toFixed(4);
+	const currencyAmount = (rate * multiplier).toFixed(4);
+	output.push({
+		title: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`,
+		subtitle: `${multiplier} ${baseCurrency} = ${currencyAmount} ${currency}`,
+		icon: {
+			path: `flags/${currency}.png`
+		},
+		arg: `${baseAmount} ${baseCurrency}`,
+		variables: {
+			function: 'copy'
+		},
+		text: {
+			copy: `${baseAmount} ${baseCurrency}`,
+			largetype: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`
+		}
+	});
+}
+
+function addCurrencyListOutput(multiplier) {
+	currencies.forEach(currency => {
+		if (currency !== baseCurrency) {
+			const rate = alfy.cache.get(currency);
+			const baseAmount = (multiplier / rate).toFixed(4);
+			const currencyAmount = (rate * multiplier).toFixed(4);
 			output.push({
-				title: `${query[0]} ${baseCurrency} = ${(rate * query[0]).toFixed(4)} ${cur}`,
-				subtitle: `${query[0]} ${cur} = ${(query[0] / rate).toFixed(4)} ${baseCurrency} (Rates last updated: ${lastUpdate})`,
+				title: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`,
+				subtitle: `${multiplier} ${baseCurrency} = ${currencyAmount} ${currency}`,
 				icon: {
-					path: `flags/${cur}.png`
+					path: `flags/${currency}.png`
 				},
-				arg: `${query[0]} ${cur}`,
-				autocomplete: `${query[0]} ${cur}`
+				arg: `${multiplier} ${currency}`,
+				autocomplete: `${multiplier} ${currency}`,
+				text: {
+					copy: `${baseAmount} ${baseCurrency}`,
+					largetype: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`
+				}
 			});
 		}
 	});
-} else if (query[0].match('^\\d+$') && query[1]) {
-	if (query[1] !== baseCurrency && currencies.includes(query[1])) {
-		const rate = alfy.cache.get(query[1]);
-		output.push({
-			title: `${query[0]} ${query[1]} = ${(query[0] / rate).toFixed(4)} ${baseCurrency}`,
-			subtitle: `${query[0]} ${baseCurrency} = ${(rate * query[0]).toFixed(4)} ${query[1]} (rates last updated: ${lastUpdate})`,
-			icon: {
-				path: `flags/${query[1]}.png`
-			}
-		});
-	}
+}
 
-	if (query[1].match('^[A-Z]{1,2}$')) {
-		currencies.filter(cur => cur.includes(query[1])).forEach(cur => {
-			const rate = alfy.cache.get(cur);
-			output.push({
-				title: `${query[0]} ${cur} = ${(query[0] / rate).toFixed(4)} ${baseCurrency}`,
-				subtitle: `${query[0]} ${baseCurrency} = ${(rate * query[0]).toFixed(4)} ${cur} (rates last updated: ${lastUpdate})`,
-				icon: {
-					path: `flags/${cur}.png`
-				}
-			});
+if (!query[0]) {
+	addInitOutput();
+} else if (query[0] === 'SET') {
+	if (!query[1]) {
+		addSetBaseCurrencyListOutput()
+	} else if (currencies.includes(query[1])) {
+		promises.push(updateRates(query[1]));
+		addUpdateRatesOutput(query[1]);
+	}
+} else if (query[0].match('^\\d+$') && !query[1]) {
+	addCurrencyListOutput(query[0]);
+} else if (query[0].match('^\\d+$') && query[1]) {
+	if (currencies.includes(query[1]) && query[1] !== baseCurrency) {
+		addCurrencyOutput(query[0], query[1]);
+	} else if (query[1].match('^[A-Z]{1,2}$')) {
+		currencies.filter(currency => currency.includes(query[1])).forEach(currency => {
+			addCurrencyListOutput(query[0], currency);
 		});
 	}
 }
