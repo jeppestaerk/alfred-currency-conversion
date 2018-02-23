@@ -84,11 +84,11 @@
 	<key>createdby</key>
 	<string>Jeppe Stærk</string>
 	<key>description</key>
-	<string>Currency Conversion</string>
+	<string>Currency conversion and foreign exchange rates</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Currency</string>
+	<string>Currency Converter</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -123,9 +123,9 @@
 				<key>scriptfile</key>
 				<string>index.js</string>
 				<key>subtext</key>
-				<string></string>
+				<string>Currency conversion and foreign exchange rates</string>
 				<key>title</key>
-				<string>Foreign exchange rates and currency conversion</string>
+				<string>Currency converter</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -308,6 +308,6 @@
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/jeppestaerk/alfred-currency-conversion#readme</string>
 </dict>
 </plist>

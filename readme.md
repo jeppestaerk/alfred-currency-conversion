@@ -14,7 +14,7 @@ $ npm install --global alfred-currency-conversion
 
 ## Usage
 
-In Alfred, type `cur`, <kbd>Enter</kbd>, and your query.
+In Alfred, type `curcon`, <kbd>Enter</kbd>, and your query.
 
 
 ## License

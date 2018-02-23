@@ -42,7 +42,7 @@ function addInitOutput() {
 	});
 	output.push({
 		title: 'Set/Update base currency',
-		subtitle: `current base currency is: ${baseCurrency} (rates last updated: ${lastUpdate})`,
+		subtitle: `current base currency is: ${baseCurrency}`,
 		arg: 'SET',
 		autocomplete: 'SET'
 	});
@@ -91,47 +91,45 @@ function addCurrencyOutput(multiplier, currency) {
 	});
 }
 
-function addCurrencyListOutput(multiplier) {
-	currencies.forEach(currency => {
-		if (currency !== baseCurrency) {
-			const rate = alfy.cache.get(currency);
-			const baseAmount = (multiplier / rate).toFixed(4);
-			const currencyAmount = (rate * multiplier).toFixed(4);
-			output.push({
-				title: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`,
-				subtitle: `${multiplier} ${baseCurrency} = ${currencyAmount} ${currency}`,
-				icon: {
-					path: `flags/${currency}.png`
-				},
-				arg: `${multiplier} ${currency}`,
-				autocomplete: `${multiplier} ${currency}`,
-				text: {
-					copy: `${baseAmount} ${baseCurrency}`,
-					largetype: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`
-				}
-			});
-		}
-	});
+function addCurrencyListOutput(multiplier, currency) {
+	if (currency !== baseCurrency) {
+		const rate = alfy.cache.get(currency);
+		const baseAmount = (multiplier / rate).toFixed(4);
+		const currencyAmount = (rate * multiplier).toFixed(4);
+		output.push({
+			title: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`,
+			subtitle: `${multiplier} ${baseCurrency} = ${currencyAmount} ${currency}`,
+			icon: {
+				path: `flags/${currency}.png`
+			},
+			arg: `${multiplier} ${currency}`,
+			autocomplete: `${multiplier} ${currency}`,
+			text: {
+				copy: `${baseAmount} ${baseCurrency}`,
+				largetype: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`
+			}
+		});
+	}
 }
 
 if (!query[0]) {
 	addInitOutput();
-} else if (query[0] === 'SET') {
-	if (!query[1]) {
-		addSetBaseCurrencyListOutput()
-	} else if (currencies.includes(query[1])) {
-		promises.push(updateRates(query[1]));
-		addUpdateRatesOutput(query[1]);
-	}
+} else if (query[0] === 'SET' && !query[1]) {
+	addSetBaseCurrencyListOutput()
+} else if (query[0] === 'SET' && currencies.includes(query[1])) {
+	promises.push(updateRates(query[1]));
+	addUpdateRatesOutput(query[1]);
 } else if (query[0].match('^\\d+$') && !query[1]) {
-	addCurrencyListOutput(query[0]);
+	currencies.forEach(currency => {
+		addCurrencyListOutput(query[0], currency);
+	});
 } else if (query[0].match('^\\d+$') && query[1]) {
-	if (currencies.includes(query[1]) && query[1] !== baseCurrency) {
-		addCurrencyOutput(query[0], query[1]);
-	} else if (query[1].match('^[A-Z]{1,2}$')) {
+	if (query[1].match('^[A-Z]{1,2}$')) {
 		currencies.filter(currency => currency.includes(query[1])).forEach(currency => {
 			addCurrencyListOutput(query[0], currency);
 		});
+	} else if (currencies.includes(query[1]) && query[1] !== baseCurrency) {
+		addCurrencyOutput(query[0], query[1]);
 	}
 }
 
