@@ -2,8 +2,7 @@
 
 > Foreign exchange rates and currency conversion
 
-![Preview](https://github.com/jeppestaerk/alfred-currency-conversion/blob/master/preview.gif)
-
+<img src="preview.gif" width="694">
 
 ## Install
 
