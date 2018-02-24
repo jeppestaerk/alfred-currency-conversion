@@ -16,7 +16,7 @@ $ npm install --global alfred-currency-conversion
 ## Functions
 
 * Set your own base currency (default `EUR`)
-* Supports <kbd>$</kdb> (`USD`), <kbd>€</kdb> (`EUR`), <kbd>£</kdb> (`GBP`), and <kbd>¥</kdb> (`JPY`)
+* Supports <kbd>$</kbd> (`USD`), <kbd>€</kbd> (`EUR`), <kbd>£</kbd> (`GBP`), and <kbd>¥</kbd> (`JPY`)
 * Currencies: `AUD`, `BGN`, `BRL`, `CAD`, `CHF`, `CNY`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `ISK`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `USD`, and `ZAR`
 
 
