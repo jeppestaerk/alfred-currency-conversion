@@ -1,7 +1,7 @@
 {
   "name": "alfred-currency-conversion",
-  "version": "0.1.5",
-  "description": "Foreign exchange rates and currency conversion",
+  "version": "0.1.6",
+  "description": "Alfred 3 workflow for Foreign exchange rates and currency conversion",
   "license": "MIT",
   "repository": "jeppestaerk/alfred-currency-conversion",
   "author": {
@@ -25,7 +25,11 @@
   "keywords": [
     "alfred",
     "workflow",
-    "alfy"
+    "alfy",
+    "alfred-workflow",
+    "alfred3",
+    "alfred3-workflow",
+    "currency-conversion"
   ],
   "dependencies": {
     "alfy": "^0.6.0"

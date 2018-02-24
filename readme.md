@@ -1,6 +1,6 @@
 # alfred-currency-conversion [![Build Status](https://travis-ci.org/jeppestaerk/alfred-currency-conversion.svg?branch=master)](https://travis-ci.org/jeppestaerk/alfred-currency-conversion)
 
-> Foreign exchange rates and currency conversion
+> Alfred 3 workflow for Foreign exchange rates and currency conversion
 
 <img src="preview.gif" width="600">
 
@@ -15,9 +15,9 @@ $ npm install --global alfred-currency-conversion
 
 ## Functions
 
-* Set your own base currency
-* Supports `$` (USD), `€` (EUR), `£` (GBP), and `¥` (JPY)
-* Currencies: `AUD`, `BGN`, `BRL`, `CAD`, `CHF`, `CNY`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `ISK`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `USD`, `ZAR`
+* Set your own base currency (default `EUR`)
+* Supports <kbd>$</kdb> (`USD`), <kbd>€</kdb> (`EUR`), <kbd>£</kdb> (`GBP`), and <kbd>¥</kdb> (`JPY`)
+* Currencies: `AUD`, `BGN`, `BRL`, `CAD`, `CHF`, `CNY`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `ISK`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `USD`, and `ZAR`
 
 
 ## Usage
