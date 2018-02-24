@@ -1,6 +1,6 @@
 {
   "name": "alfred-currency-conversion",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Foreign exchange rates and currency conversion",
   "license": "MIT",
   "repository": "jeppestaerk/alfred-currency-conversion",

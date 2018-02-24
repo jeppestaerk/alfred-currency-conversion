@@ -2,7 +2,7 @@
 
 > Foreign exchange rates and currency conversion
 
-<img src="preview.gif" width="694">
+<img src="preview.gif" width="600">
 
 ## Install
 
