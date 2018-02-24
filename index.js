@@ -133,9 +133,15 @@ if (nextUpdate < new Date()){
 	});
 }
 
-if (!baseCurrency || !lastUpdate) {
+if (query[0] !== 'BASE' && (!baseCurrency || !lastUpdate)) {
 	promises.push(getOSLocale());
-	currencies.forEach(currency => addSetBaseCurrencyListOutput(currency));
+	if (query[0].length < 1) {
+		currencies.forEach(currency => addSetBaseCurrencyListOutput(currency));
+	} else if (query[0].match('^[A-Z]{1,2}$')) {
+		currencies.filter(currency => currency.includes(query[0])).forEach(currency => addSetBaseCurrencyListOutput(currency));
+	} else if (currencies.includes(query[1]) && query[1] !== baseCurrency) {
+		addSetBaseCurrencyListOutput(query[1]);
+	}
 } else if (!query[0]) {
 	addBaseOutput();
 } else if (query[0] === 'BASE' && !query[1]) {
