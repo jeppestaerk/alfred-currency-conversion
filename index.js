@@ -135,7 +135,7 @@ if (nextUpdate < new Date()){
 
 if (query[0] !== 'BASE' && (!baseCurrency || !lastUpdate)) {
 	promises.push(getOSLocale());
-	if (query[0].length < 1) {
+	if (!query[0]) {
 		currencies.forEach(currency => addSetBaseCurrencyListOutput(currency));
 	} else if (query[0].match('^[A-Z]{1,2}$')) {
 		currencies.filter(currency => currency.includes(query[0])).forEach(currency => addSetBaseCurrencyListOutput(currency));
