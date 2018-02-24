@@ -1,6 +1,6 @@
 {
   "name": "alfred-currency-conversion",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Alfred 3 workflow for Foreign exchange rates and currency conversion",
   "license": "MIT",
   "repository": "jeppestaerk/alfred-currency-conversion",

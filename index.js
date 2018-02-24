@@ -38,7 +38,7 @@ function updateRates(base) {
 
 function addBaseOutput() {
 	output.push({
-		title: `See current rates for ${baseCurrency}`,
+		title: `Type amount to see current rates for ${baseCurrency}`,
 		subtitle: `rates last updated: ${lastUpdate.toLocaleString(locale)}, next update: ${nextUpdate.toLocaleString(locale)}`,
 		arg: '1',
 		autocomplete: '1',
@@ -92,7 +92,7 @@ function addCurrencyListOutput(multiplier, currency) {
 			arg: `${amount.toLocaleString(locale)} ${currency}`,
 			autocomplete: `${amount.toLocaleString(locale)} ${currency}`,
 			text: {
-				copy: `${baseAmount.toLocaleString(locale)} ${baseCurrency}`,
+				copy: `${baseAmount.toLocaleString(locale)}`,
 				largetype: `${amount.toLocaleString(locale)} ${currency} = ${baseAmount.toLocaleString(locale)} ${baseCurrency}`
 			}
 		});
@@ -110,12 +110,12 @@ function addCurrencyOutput(multiplier, currency) {
 		icon: {
 			path: `flags/${currency}.png`
 		},
-		arg: `${baseAmount.toLocaleString(locale)} ${baseCurrency}`,
+		arg: `${baseAmount.toLocaleString(locale)}`,
 		variables: {
 			function: 'copy'
 		},
 		text: {
-			copy: `${baseAmount.toLocaleString(locale)} ${baseCurrency}`,
+			copy: `${baseAmount.toLocaleString(locale)}`,
 			largetype: `${amount.toLocaleString(locale)} ${currency} = ${baseAmount.toLocaleString(locale)} ${baseCurrency}`
 		}
 	});
@@ -144,6 +144,7 @@ if (query[0] !== 'BASE' && (!baseCurrency || !lastUpdate)) {
 	}
 } else if (!query[0]) {
 	addBaseOutput();
+	currencies.forEach(currency => addCurrencyListOutput('1', currency));
 } else if (query[0] === 'BASE' && !query[1]) {
 	currencies.forEach(currency => addSetBaseCurrencyListOutput(currency));
 } else if (query[0] === 'BASE' && query[1]) {
