@@ -7,6 +7,7 @@ const output = [];
 const promises = [];
 const api = 'https://api.fixer.io';
 const currencies = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"];
+const topCurrencies = ["USD", "EUR", "JPY", "GBP", "CHF", "CAD", "AUD"];
 const lastUpdate = new Date(alfy.cache.get('updateDate'));
 const nextUpdate = new Date(alfy.cache.get('nextUpdate'));
 const l = alfy.cache.get('locale') || 'en-GB';
@@ -58,13 +59,13 @@ function addBaseOutput() {
 }
 
 function addSetBaseCurrencyListOutput(currency) {
-		output.push({
-			title: `Set base currency to: ${currency}`,
-			icon: {
-				path: `flags/${currency}.png`
-			},
-			arg: `BASE ${currency}`
-		})
+	output.push({
+		title: `Set base currency to: ${currency}`,
+		icon: {
+			path: `flags/${currency}.png`
+		},
+		arg: `BASE ${currency}`
+	})
 }
 
 function addUpdateRatesOutput(currency) {
@@ -144,7 +145,7 @@ if (query[0] !== 'BASE' && (!baseCurrency || !lastUpdate)) {
 	}
 } else if (!query[0]) {
 	addBaseOutput();
-	currencies.forEach(currency => addCurrencyListOutput('1', currency));
+	topCurrencies.forEach(currency => addCurrencyListOutput('1', currency));
 } else if (query[0] === 'BASE' && !query[1]) {
 	currencies.forEach(currency => addSetBaseCurrencyListOutput(currency));
 } else if (query[0] === 'BASE' && query[1]) {
