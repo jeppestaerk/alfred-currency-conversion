@@ -1,6 +1,6 @@
 {
   "name": "alfred-currency-conversion",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Alfred 3 workflow for Foreign exchange rates and currency conversion",
   "license": "MIT",
   "repository": "jeppestaerk/alfred-currency-conversion",
@@ -20,19 +20,21 @@
     "index.js",
     "icon.png",
     "info.plist",
+    "settings.png",
     "flags/*.png"
   ],
   "keywords": [
     "alfred",
-    "workflow",
-    "alfy",
-    "alfred-workflow",
     "alfred3",
+    "workflow",
+    "alfred-workflow",
     "alfred3-workflow",
+    "alfy",
     "currency-conversion"
   ],
   "dependencies": {
-    "alfy": "^0.6.0"
+    "alfy": "^0.6.0",
+    "os-locale": "^2.1.0"
   },
   "devDependencies": {}
 }

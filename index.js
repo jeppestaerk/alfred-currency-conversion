@@ -1,20 +1,33 @@
 'use strict';
 const alfy = require('alfy');
+const osLocale = require('os-locale');
 
 const query = [];
 const output = [];
 const promises = [];
 const api = 'https://api.fixer.io';
 const currencies = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"];
-const lastUpdate = alfy.cache.get('updateDate');
+const lastUpdate = new Date(alfy.cache.get('updateDate'));
+const nextUpdate = new Date(alfy.cache.get('nextUpdate'));
+const locale = alfy.cache.get('locale').replace('_', '-') || 'en-GB';
 const baseCurrency = alfy.cache.get('baseCurrency');
-const q = alfy.input.toUpperCase().replace('$', 'USD').replace('€', 'EUR').replace('£', 'GBP').replace('¥', 'JPY').split(/([0-9]+)([A-z]{1,3})/);
+const q = alfy.input.toUpperCase().replace('$', 'USD').replace('€', 'EUR').replace('£', 'GBP').replace('¥', 'JPY').split(/(\d*[.,]?\d+)([A-z]{1,3})/);
 q.forEach(item => item.split(" ").filter(item => item.length > 0).forEach(item => query.push(item)));
+
+function getOSLocale() {
+	return osLocale().then(locale => alfy.cache.set('locale', locale));
+}
 
 function cacheRates(data) {
 	const rates = data['rates'];
 	Object.keys(rates).forEach(cur => alfy.cache.set(cur, rates[cur]));
-	alfy.cache.set('updateDate', data['date']);
+	const lastUpdateTime = new Date(data['date']);
+	lastUpdateTime.setUTCHours(15, 0, 0, 0);
+	const nextUpdateTime = new Date(data['date']);
+	nextUpdateTime.setUTCDate(nextUpdateTime.getDate() + 1);
+	nextUpdateTime.setUTCHours(15, 15, 0, 0);
+	alfy.cache.set('nextUpdate', nextUpdateTime);
+	alfy.cache.set('updateDate', lastUpdateTime);
 	alfy.cache.set('baseCurrency', data['base']);
 }
 
@@ -25,7 +38,7 @@ function updateRates(base) {
 function addBaseOutput() {
 	output.push({
 		title: `See current rates for ${baseCurrency}`,
-		subtitle: `rates last updated: ${lastUpdate}`,
+		subtitle: `rates last updated: ${lastUpdate.toLocaleString(locale)}, next update: ${nextUpdate.toLocaleString(locale)}`,
 		arg: '1',
 		autocomplete: '1',
 		icon: {
@@ -36,7 +49,10 @@ function addBaseOutput() {
 		title: 'Set/Update base currency',
 		subtitle: `current base currency is: ${baseCurrency}`,
 		arg: 'BASE ',
-		autocomplete: 'BASE '
+		autocomplete: 'BASE ',
+		icon: {
+			path: 'settings.png'
+		}
 	});
 }
 
@@ -52,7 +68,7 @@ function addSetBaseCurrencyListOutput(currency) {
 
 function addUpdateRatesOutput(currency) {
 	output.push({
-		title: `Update rates for: ${currency}`,
+		title: `Set ${currency} as base and update rates`,
 		icon: {
 			path: `flags/${currency}.png`
 		},
@@ -63,19 +79,20 @@ function addUpdateRatesOutput(currency) {
 function addCurrencyListOutput(multiplier, currency) {
 	if (currency !== baseCurrency) {
 		const rate = alfy.cache.get(currency);
-		const baseAmount = (multiplier / rate).toFixed(4);
-		const currencyAmount = (rate * multiplier).toFixed(4);
+		const amount = Number(multiplier.replace(',', '.'));
+		const baseAmount = Number(amount / rate);
+		const currencyAmount = Number(rate * amount);
 		output.push({
-			title: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`,
-			subtitle: `${multiplier} ${baseCurrency} = ${currencyAmount} ${currency}`,
+			title: `${amount.toLocaleString(locale)} ${currency} = ${baseAmount.toLocaleString(locale)} ${baseCurrency}`,
+			subtitle: `${amount.toLocaleString(locale)} ${baseCurrency} = ${currencyAmount.toLocaleString(locale)} ${currency}`,
 			icon: {
 				path: `flags/${currency}.png`
 			},
-			arg: `${multiplier} ${currency}`,
-			autocomplete: `${multiplier} ${currency}`,
+			arg: `${amount.toLocaleString(locale)} ${currency}`,
+			autocomplete: `${amount.toLocaleString(locale)} ${currency}`,
 			text: {
-				copy: `${baseAmount} ${baseCurrency}`,
-				largetype: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`
+				copy: `${baseAmount.toLocaleString(locale)} ${baseCurrency}`,
+				largetype: `${amount.toLocaleString(locale)} ${currency} = ${baseAmount.toLocaleString(locale)} ${baseCurrency}`
 			}
 		});
 	}
@@ -83,27 +100,40 @@ function addCurrencyListOutput(multiplier, currency) {
 
 function addCurrencyOutput(multiplier, currency) {
 	const rate = alfy.cache.get(currency);
-	const baseAmount = (multiplier / rate).toFixed(4);
-	const currencyAmount = (rate * multiplier).toFixed(4);
+	const amount = Number(multiplier.replace(',', '.'));
+	const baseAmount = Number(amount / rate);
+	const currencyAmount = Number(rate * amount);
 	output.push({
-		title: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`,
-		subtitle: `${multiplier} ${baseCurrency} = ${currencyAmount} ${currency}`,
+		title: `${amount.toLocaleString(locale)} ${currency} = ${baseAmount.toLocaleString(locale)} ${baseCurrency}`,
+		subtitle: `${amount.toLocaleString(locale)} ${baseCurrency} = ${currencyAmount.toLocaleString(locale)} ${currency}`,
 		icon: {
 			path: `flags/${currency}.png`
 		},
-		arg: `${baseAmount} ${baseCurrency}`,
+		arg: `${baseAmount.toLocaleString(locale)} ${baseCurrency}`,
 		variables: {
 			function: 'copy'
 		},
 		text: {
-			copy: `${baseAmount} ${baseCurrency}`,
-			largetype: `${multiplier} ${currency} = ${baseAmount} ${baseCurrency}`
+			copy: `${baseAmount.toLocaleString(locale)} ${baseCurrency}`,
+			largetype: `${amount.toLocaleString(locale)} ${currency} = ${baseAmount.toLocaleString(locale)} ${baseCurrency}`
+		}
+	});
+}
+
+if (nextUpdate < new Date()){
+	promises.push(getOSLocale());
+	promises.push(updateRates(baseCurrency));
+	output.push({
+		title: `INFO: Rates for ${baseCurrency} updated: ${new Date(alfy.cache.get('updateDate')).toLocaleString(locale)}`,
+		subtitle: `next update: ${new Date(alfy.cache.get('nextUpdate')).toLocaleString(locale)}`,
+		icon: {
+			path: 'settings.png'
 		}
 	});
 }
 
 if (!baseCurrency || !lastUpdate) {
-	promises.push(updateRates("EUR"));
+	promises.push(getOSLocale());
 	currencies.forEach(currency => addSetBaseCurrencyListOutput(currency));
 } else if (!query[0]) {
 	addBaseOutput();
@@ -113,12 +143,13 @@ if (!baseCurrency || !lastUpdate) {
 	if (query[1].match('^[A-Z]{1,2}$')) {
 		currencies.filter(currency => currency.includes(query[1])).forEach(currency => addSetBaseCurrencyListOutput(currency));
 	} else if (currencies.includes(query[1])) {
+		promises.push(getOSLocale());
 		promises.push(updateRates(query[1]));
 		addUpdateRatesOutput(query[1]);
 	}
-} else if (query[0].match('^\\d+$') && !query[1]) {
+} else if (query[0].match(/\d*([.,]?\d+)/) && !query[1]) {
 	currencies.forEach(currency => addCurrencyListOutput(query[0], currency));
-} else if (query[0].match('^\\d+$') && query[1]) {
+} else if (query[0].match(/\d*([.,]?\d+)/) && query[1]) {
 	if (query[1].match('^[A-Z]{1,2}$')) {
 		currencies.filter(currency => currency.includes(query[1])).forEach(currency => addCurrencyListOutput(query[0], currency));
 	} else if (currencies.includes(query[1]) && query[1] !== baseCurrency) {
