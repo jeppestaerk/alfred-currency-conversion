@@ -26,7 +26,7 @@ function cacheRates(data) {
 	const lastUpdateTime = new Date(data['date']);
 	lastUpdateTime.setUTCHours(15, 0, 0, 0);
 	const nextUpdateTime = new Date(data['date']);
-	nextUpdateTime.setUTCDate(nextUpdateTime.getDate() + 1);
+	nextUpdateTime.getUTCDay() >= 5 ? nextUpdateTime.setUTCDate(nextUpdateTime.getDate() + 3) : nextUpdateTime.setUTCDate(nextUpdateTime.getDate() + 1);
 	nextUpdateTime.setUTCHours(15, 15, 0, 0);
 	alfy.cache.set('nextUpdate', nextUpdateTime);
 	alfy.cache.set('updateDate', lastUpdateTime);

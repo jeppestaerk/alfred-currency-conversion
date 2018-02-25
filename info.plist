@@ -115,7 +115,7 @@
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
-				<string>Searching...</string>
+				<string>Fetching rates...</string>
 				<key>script</key>
 				<string>./node_modules/.bin/run-node index.js "$1"</string>
 				<key>scriptargtype</key>
@@ -125,7 +125,7 @@
 				<key>subtext</key>
 				<string>Currency conversion and foreign exchange rates</string>
 				<key>title</key>
-				<string>Currency converter</string>
+				<string>Currency Converter</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -254,7 +254,26 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string># alfred-currency-conversion
+&gt; Alfred 3 Workflow - See foreign exchange rates and currency conversion
+
+## Usage
+In Alfred, type `curcon`, ⏎, and your amount.
+
+## Highlights
+- Set your own base currency (default `EUR`)
+- Currencies: `AUD`, `BGN`, `BRL`, `CAD`, `CHF`, `CNY`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `ISK`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `USD`, and `ZAR`
+- Auto update rates at 4PM CET on working days
+- Input support locale numbers
+- Input support for $ (`USD`), € (`EUR`), £ (`GBP`), and ¥ (`JPY`)
+- Outputs dates and numbers in locale
+
+## Contributions:
+Please feel free to create a PR and/or make a code review!
+[GitHub Repository](https://github.com/jeppestaerk/alfred-currency-conversion)
+
+## License
+MIT © [Jeppe Stærk](https://staerk.io)</string>
 	<key>uidata</key>
 	<dict>
 		<key>1764A639-42CB-45C0-938C-D34487A765F2</key>
