@@ -5,7 +5,7 @@ const osLocale = require('os-locale');
 const query = [];
 const output = [];
 const promises = [];
-const api = 'https://api.fixer.io';
+const api = 'https://api.exchangerate-api.com/v4';
 const currencies = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"];
 const topCurrencies = ["USD", "EUR", "JPY", "GBP", "CHF", "CAD", "AUD"];
 const lastUpdate = new Date(alfy.cache.get('updateDate'));
@@ -34,7 +34,7 @@ function cacheRates(data) {
 }
 
 function updateRates(base) {
-	return alfy.fetch(`${api}/latest?base=${base}`).then(cacheRates);
+	return alfy.fetch(`${api}/latest/${base}`).then(cacheRates);
 }
 
 function addBaseOutput() {

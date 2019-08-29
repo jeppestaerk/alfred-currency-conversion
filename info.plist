@@ -98,6 +98,8 @@
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -136,7 +138,7 @@
 			<key>uid</key>
 			<string>BC036EA6-E275-4C9E-B3A3-3E89948DF194</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -146,7 +148,7 @@
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>tell application "Alfred 3" to search "curcon {query}"</string>
+				<string>tell application "Alfred 4" to search "curcon {query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -195,7 +197,7 @@
 			<key>uid</key>
 			<string>52C50F4F-C06D-498E-B2F7-AFF0A7072F26</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -326,8 +328,10 @@ MIT © [Jeppe Stærk](https://staerk.io)</string>
 			<integer>210</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string></string>
+	<string>v0.2.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/jeppestaerk/alfred-currency-conversion#readme</string>
 </dict>
