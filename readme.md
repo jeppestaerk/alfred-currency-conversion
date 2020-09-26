@@ -52,7 +52,7 @@ Please feel free to create a PR and/or make a code review!
 * [alfy](https://github.com/sindresorhus/alfy) made by [Sindre Sorhus](https://sindresorhus.com/) is licensed by [MIT](https://github.com/sindresorhus/alfy/blob/master/license)
 * [os-locale](https://github.com/sindresorhus/os-locale) made by [Sindre Sorhus](https://sindresorhus.com/) is licensed by [MIT](https://github.com/sindresorhus/os-locale/blob/master/license)
 * Currency rates from [exchangerate-api.com](https://www.exchangerate-api.com/) via `https://api.exchangerate-api.com/v4` (exchange rate data is updated once every 24 hours)
-* Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
+* Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/packs/countrys-flags) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
 
 
 ## License

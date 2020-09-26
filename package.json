@@ -1,6 +1,6 @@
 {
   "name": "alfred-currency-conversion",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Alfred 4 Workflow - See foreign exchange rates and currency conversion",
   "license": "MIT",
   "repository": "jeppestaerk/alfred-currency-conversion",
@@ -10,7 +10,7 @@
     "url": "https://github.com/jeppestaerk/alfred-currency-conversion"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=8"
   },
   "scripts": {
     "postinstall": "alfy-init",
@@ -34,8 +34,8 @@
     "foreign-exchange-rates"
   ],
   "dependencies": {
-    "alfy": "^0.9.0",
-    "os-locale": "^4.0.0"
+    "alfy": "^0.10.0",
+    "os-locale": "^5.0.0"
   },
   "devDependencies": {}
 }
