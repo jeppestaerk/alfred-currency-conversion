@@ -189,6 +189,8 @@
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -257,7 +259,7 @@
 	</array>
 	<key>readme</key>
 	<string># alfred-currency-conversion
-&gt; Alfred 3 Workflow - See foreign exchange rates and currency conversion
+&gt; Alfred 4 Workflow - See foreign exchange rates and currency conversion
 
 ## Usage
 In Alfred, type `curcon`, ⏎, and your amount.
@@ -267,7 +269,8 @@ In Alfred, type `curcon`, ⏎, and your amount.
 - Currencies: `AUD`, `BGN`, `BRL`, `CAD`, `CHF`, `CNY`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `ISK`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `USD`, and `ZAR`
 - Auto update rates at 4PM CET on working days
 - Input support locale numbers
-- Input support for $ (`USD`), € (`EUR`), £ (`GBP`), and ¥ (`JPY`)
+- Input support for $ (`USD`), € (`EUR`), £ (`GBP`), ¥ (`JPY`), ₩ (`KRW`), ₽ (`RUB`), and ₹ (`INR`)
+- Set your own favorite currency list
 - Outputs dates and numbers in locale
 
 ## Contributions:
@@ -331,7 +334,7 @@ MIT © [Jeppe Stærk](https://staerk.io)</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>v0.2.0</string>
+	<string>v1.6.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/jeppestaerk/alfred-currency-conversion#readme</string>
 </dict>
