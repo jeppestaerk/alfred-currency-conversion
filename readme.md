@@ -13,7 +13,9 @@ Use `npm`
 ```
 $ npm install --global alfred-currency-conversion
 ```
-or download `alfredworkflow` file from [releases](https://github.com/jeppestaerk/alfred-currency-conversion/releases/latest)
+or download `alfredworkflow` file by clicking [here](https://github.com/jeppestaerk/alfred-currency-conversion/raw/master/alfred-currency-conversion.alfredworkflow)
+
+(Release might be outdated, so please download a workflow from the link above.)
 
 *Requires [Node.js](https://nodejs.org) 8+ and the Alfred [Powerpack](https://www.alfredapp.com/powerpack/).*
 
@@ -21,8 +23,8 @@ or download `alfredworkflow` file from [releases](https://github.com/jeppestaerk
 ## Highlights
 
 - Set your own base currency (default `EUR`)
-- Currencies: `AED`, `AUD`, `BGN`, `BRL`, `CAD`, `CHF`, `CNY`, `COP`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `ISK`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `USD`, and `ZAR`
-- Auto update rates at 4PM CET on working days
+- Currencies: `AED`, `AFN`, `ALL`, `AMD`, `ANG`, `AOA`, `ARS`, `AUD`, `AWG`, `AZN`, `BAM`, `BBD`, `BDT`, `BGN`, `BHD`, `BIF`, `BMD`, `BND`, `BOB`, `BRL`, `BSD`, `BTN`, `BWP`, `BYN`, `BZD`, `CAD`, `CDF`, `CHF`, `CLP`, `CNY`, `COP`, `CRC`, `CUC`, `CUP`, `CVE`, `CZK`, `DJF`, `DKK`, `DOP`, `DZD`, `EGP`, `ERN`, `ETB`, `EUR`, `FJD`, `FKP`, `FOK`, `GBP`, `GEL`, `GGP`, `GHS`, `GIP`, `GMD`, `GNF`, `GTQ`, `GYD`, `HKD`, `HNL`, `HRK`, `HTG`, `HUF`, `IDR`, `ILS`, `IMP`, `INR`, `IQD`, `IRR`, `ISK`, `JMD`, `JOD`, `JPY`, `KES`, `KGS`, `KHR`, `KID`, `KMF`, `KRW`, `KWD`, `KYD`, `KZT`, `LAK`, `LBP`, `LKR`, `LRD`, `LSL`, `LYD`, `MAD`, `MDL`, `MGA`, `MKD`, `MMK`, `MNT`, `MOP`, `MRU`, `MUR`, `MVR`, `MWK`, `MXN`, `MYR`, `MZN`, `NAD`, `NGN`, `NIO`, `NOK`, `NPR`, `NZD`, `OMR`, `PAB`, `PEN`, `PGK`, `PHP`, `PKR`, `PLN`, `PYG`, `QAR`, `RON`, `RSD`, `RUB`, `RWF`, `SAR`, `SBD`, `SCR`, `SDG`, `SEK`, `SGD`, `SHP`, `SLL`, `SOS`, `SRD`, `SSP`, `STN`, `SYP`, `SZL`, `THB`, `TJS`, `TMT`, `TND`, `TOP`, `TRY`, `TTD`, `TVD`, `TWD`, `TZS`, `UAH`, `UGX`, `USD`, `UYU`, `UZS`, `VES`, `VND`, `VUV`, `WST`, `XAF`, `XCD`, `XDR`, `XOF`, `XPF`, `YER`, `ZAR`, and `ZMW`
+- Auto update rates once a day
 - Input support locale numbers
 - Input support for $ (`USD`), € (`EUR`), £ (`GBP`), ¥ (`JPY`), ₩ (`KRW`), ₽ (`RUB`), and ₹ (`INR`)
 - Set your own favorite currency list
@@ -31,7 +33,18 @@ or download `alfredworkflow` file from [releases](https://github.com/jeppestaerk
 
 ## Usage
 
-In Alfred, type `curcon`, <kbd>⏎</kbd>, and your amount.
+In Alfred, type `curcon`, <kbd>⏎</kbd>
+
+If you set your favorite currency list, you will get converted amount to your favorite currency by simply typing `curcon {number}`
+(Both `favorite currency` -> `base currency` and `base currency` -> `favorite currency`)
+
+`curcon BASE` to set your base currency
+
+`curcon LIST` to add your favorite currency to the list
+
+`curcon RMVE` to remove a currency from the list
+
+`curcon REST` to reset your favorite currency list
 
 
 ## Contributions
@@ -52,7 +65,7 @@ Please feel free to create a PR and/or make a code review!
 
 * [alfy](https://github.com/sindresorhus/alfy) made by [Sindre Sorhus](https://sindresorhus.com/) is licensed by [MIT](https://github.com/sindresorhus/alfy/blob/master/license)
 * [os-locale](https://github.com/sindresorhus/os-locale) made by [Sindre Sorhus](https://sindresorhus.com/) is licensed by [MIT](https://github.com/sindresorhus/os-locale/blob/master/license)
-* Currency rates from [exchangerate-api.com](https://www.exchangerate-api.com/) via `https://api.exchangerate-api.com/v4` (exchange rate data is updated once every 24 hours)
+* Currency rates from [exchangerate-api.com](https://www.exchangerate-api.com/) via `https://open.er-api.com/v6` (exchange rate data is updated once every 24 hours)
 * Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/packs/countrys-flags) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
 
 
