@@ -21,7 +21,7 @@ or download `alfredworkflow` file from [releases](https://github.com/jeppestaerk
 ## Highlights
 
 - Set your own base currency (default `EUR`)
-- Currencies: `AED`, `AUD`, `BGN`, `BRL`, `CAD`, `CHF`, `CNY`, `COP`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `ISK`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `USD`, and `ZAR`
+- Currencies: `AED`, `AUD`, `BGN`, `BRL`, `CAD`, `CHF`, `CNY`, `COP`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `ISK`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `USD`, `VND`, and `ZAR`
 - Auto update rates at 4PM CET on working days
 - Input support locale numbers
 - Input support for $ (`USD`), € (`EUR`), £ (`GBP`), ¥ (`JPY`), ₩ (`KRW`), ₽ (`RUB`), and ₹ (`INR`)
