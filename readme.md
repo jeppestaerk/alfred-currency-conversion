@@ -6,38 +6,35 @@
 
 <img src="https://raw.githubusercontent.com/jeppestaerk/alfred-currency-conversion/master/preview.gif">
 
-
 ## Install
 
 Use `npm`
+
 ```
 $ npm install --global alfred-currency-conversion
 ```
+
 or download `alfredworkflow` file from [releases](https://github.com/jeppestaerk/alfred-currency-conversion/releases/latest)
 
-*Requires [Node.js](https://nodejs.org) 8+ and the Alfred [Powerpack](https://www.alfredapp.com/powerpack/).*
-
+_Requires [Node.js](https://nodejs.org) 8+ and the Alfred [Powerpack](https://www.alfredapp.com/powerpack/)._
 
 ## Highlights
 
 - Set your own base currency (default `EUR`)
-- Currencies: `AED`, `AUD`, `BGN`, `BRL`, `CAD`, `CHF`, `CNY`, `COP`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `ISK`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `UAH`, `USD`, `VND`, and `ZAR`
+- Currencies: `AED`, `AUD`, `ALL`, `AMD`,`AZN` ,`BDT`, `BGN`, `BRL`,`BHD`, `CAD`, `CHF`, `CNY`, `COP`, `CZK`, `DKK`, `EUR`, `GBP`, `HKD`, `HRK`, `HUF`, `IDR`, `ILS`, `INR`, `ISK`, `JPY`, `KRW`, `MXN`, `MYR`, `NOK`, `NZD`, `PHP`, `PLN`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `THB`, `TRY`, `UAH`, `USD`, `VND`, and `ZAR`
 - Auto update rates at 4PM CET on working days
 - Input support locale numbers
 - Input support for $ (`USD`), € (`EUR`), £ (`GBP`), ¥ (`JPY`), ₩ (`KRW`), ₽ (`RUB`), and ₹ (`INR`)
 - Set your own favorite currency list
 - Outputs dates and numbers in locale
 
-
 ## Usage
 
 In Alfred, type `curcon`, <kbd>⏎</kbd>, and your amount.
 
-
 ## Contributions
 
 Please feel free to create a PR and/or make a code review!
-
 
 ## To do
 
@@ -45,20 +42,17 @@ Please feel free to create a PR and/or make a code review!
 - [x] ~~Update to work with Alfred 4~~
 - [x] ~~Find a free replacement for fixer.io~~
 - [ ] Refactor code
-- [ ] *Your idea here*
-
+- [ ] _Your idea here_
 
 ## Credits
 
-* [alfy](https://github.com/sindresorhus/alfy) made by [Sindre Sorhus](https://sindresorhus.com/) is licensed by [MIT](https://github.com/sindresorhus/alfy/blob/master/license)
-* [os-locale](https://github.com/sindresorhus/os-locale) made by [Sindre Sorhus](https://sindresorhus.com/) is licensed by [MIT](https://github.com/sindresorhus/os-locale/blob/master/license)
-* Currency rates from [exchangerate-api.com](https://www.exchangerate-api.com/) via `https://api.exchangerate-api.com/v4` (exchange rate data is updated once every 24 hours)
-* Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/packs/countrys-flags) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
-
+- [alfy](https://github.com/sindresorhus/alfy) made by [Sindre Sorhus](https://sindresorhus.com/) is licensed by [MIT](https://github.com/sindresorhus/alfy/blob/master/license)
+- [os-locale](https://github.com/sindresorhus/os-locale) made by [Sindre Sorhus](https://sindresorhus.com/) is licensed by [MIT](https://github.com/sindresorhus/os-locale/blob/master/license)
+- Currency rates from [exchangerate-api.com](https://www.exchangerate-api.com/) via `https://api.exchangerate-api.com/v4` (exchange rate data is updated once every 24 hours)
+- Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/packs/countrys-flags) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
 
 ## License
 
 MIT © [Jeppe Stærk](https://staerk.io)
-
 
 <p align="center"><img src="https://raw.githubusercontent.com/jeppestaerk/alfred-currency-conversion/master/icon.png" width="64" ></p>
