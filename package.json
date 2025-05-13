@@ -34,7 +34,7 @@
     "foreign-exchange-rates"
   ],
   "dependencies": {
-    "alfy": "^0.10.0",
+    "alfy": "^2.1.0",
     "os-locale": "^5.0.0"
   },
   "devDependencies": {}
